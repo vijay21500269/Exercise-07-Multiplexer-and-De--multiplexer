@@ -47,42 +47,79 @@ If the control input changes to AB = 10, then all the gates are restricted excep
  
  
 ### Procedure
-/* write all the steps invloved */
+1.Open Quartus II and select new project and choose the file location.
+
+2.Module Declaration. Module should have the file name.
+
+3.Input-Output Delecaration.
+
+4.Use wire to define the functionality of logic circuits.
+
+5.At the end give endmodule.
+
+6.Run the program and choose RTL viewer to get RTL realization.
 
 
 
 ### PROGRAM 
-/*
+~~~
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
-
-
-
-
-
+Developed by: R.Vijay
+RegisterNumber: 212221230121
+~~~
+#### Mutliplexer
+~~~
+module ex07(I0,I1,I2,I3,S0,S1,Y);
+input I0,I1,I2,I3,S0,S1;
+output Y;
+wire P,Q,R,S,S0c,S1c;
+not(S0c,S0);
+nor(S1c,S1);
+and (P,S0c,S1c,I0);
+and(Q,S0c,S1,I1);
+and(R,S0,S1c,I2);
+and(S,S0,S1,I3);
+or(Y,P,Q,R,S);
+endmodule
+~~~
+#### De-multiplexer
+~~~
+module ex07(Y0,Y1,Y2,Y3,S0,S1,I);
+input I,S0,S1;
+output Y0,Y1,Y2,Y3;
+wire S0c,S1c;
+not(S0c,S0);
+nor(S1c,S1);
+and (Y0,I,S0c,S1c);
+and(Y1,I,S0c,S1);
+and(Y2,I,S0,S1c);
+and(Y3,I,S0,S1);
+endmodule
+~~~
 
 ### RTL LOGIC  
-
-
-
-
-
-
-
-
+#### Multiplexer
+![](https://github.com/Akash020803/Exercise-08-Multiplexer-and-De--multiplexer/blob/main/7.png)
+#### De-multiplexer
+![](https://github.com/Akash020803/Exercise-08-Multiplexer-and-De--multiplexer/blob/main/7nd.png)
 ### TIMING DIGRAMS  
-
-
-
-
+#### Multiplexer
+##### When I0=1
+![](https://github.com/Akash020803/Exercise-08-Multiplexer-and-De--multiplexer/blob/main/i0.png)
+##### When I1=1
+![](https://github.com/Akash020803/Exercise-08-Multiplexer-and-De--multiplexer/blob/main/i1.png)
+##### When I2=1
+![](https://github.com/Akash020803/Exercise-08-Multiplexer-and-De--multiplexer/blob/main/i2.png)
+##### When I3=1
+![](https://github.com/Akash020803/Exercise-08-Multiplexer-and-De--multiplexer/blob/main/i3.png)
+#### De-multiplexer
+![](https://github.com/Akash020803/Exercise-08-Multiplexer-and-De--multiplexer/blob/main/de.png)
 
 ### TRUTH TABLE 
-
-
-
-
-
+#### Multiplexer
+![](https://github.com/Akash020803/Exercise-08-Multiplexer-and-De--multiplexer/blob/main/T1.png)
+#### De-multiplexer
+![](https://github.com/Akash020803/Exercise-08-Multiplexer-and-De--multiplexer/blob/main/T2.png)
 
 ### RESULTS 
+4 X1 multiplexer and 1X4 de multiplexer has been implemented using verilog and outputs are validated.
